@@ -44,13 +44,44 @@ function start(){
 };
 
 function viewDepartmentSales(){
-
+var query = "Select departments.department_id, departments.department_name,departments.over_head_cost, products.product_sales From "
 
 }
 
 
 function createNewDepartment(){
+  inquirer
+  .prompt([
+    
+  {
+    name: "departmentName",
+    message: "What department is it?"
 
+  },
+  {
+    name: "overheadcost",
+    message: "what is the overhead cost?"
+  }
+  ])
+  .then(function(answer) {
+
+    var query = connection.query("Insert into departments set ?",{
+      department_name:answer.departmentName,
+      over_head_cost:answer.overheadcost,
+      
+    },
+    function(err,res){
+      if (err) throw err;
+
+      console.log("-----------------------------------");
+      console.log("you have successfully added the department")
+      
+
+
+      connection.end();
+
+  });
+})
 
   
 }

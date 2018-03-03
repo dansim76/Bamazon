@@ -79,8 +79,8 @@ function updatedata(chosenitem, answers){
         "update products Set ? where ? ",
         [
         {
-          stock_quantity: parseInt(chosenitem.stock_quantity) - parseInt(answers.unit)
-          
+          stock_quantity: parseInt(chosenitem.stock_quantity) - parseInt(answers.unit),
+          product_sales:parseInt(answers.unit)*parseInt(chosenitem.price)
         },
         {
            item_id: parseInt(answers.id)
